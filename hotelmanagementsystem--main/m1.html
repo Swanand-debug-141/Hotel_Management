@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>project</title>
+<style>
+    body {
+        background-image: url("ccc.jpg");
+        background-size: cover;
+    }
+    
+    .container {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+    
+    .menu {
+        display: flex;
+        justify-content: space-between;
+        background-color: rgba(0,0,0,0.5);
+        padding: 10px;
+    }
+    
+    .menu a {
+        text-decoration: none;
+        color: white;
+    }
+    
+    .menu a:hover {
+        color: #4CAF50; /* Updated button hover color */
+    }
+    
+    .form-container {
+        margin-top: 100px;
+        padding: 20px;
+        background-color: rgba(0,0,0,0.5);
+        width: 300px;
+    }
+    
+    .form-container h2 {
+        color: white;
+    }
+    
+    .form-container input[type="text"],
+    .form-container input[type="password"] {
+        width: 100%;
+        padding: 5px;
+        margin-bottom: 10px;
+    }
+    
+    .form-container button {
+        width: 100%;
+        height: 30px;
+        font-size: 22px;
+        background-color: #4CAF50; /* Updated button color */
+        color: white;
+        border: none;
+    }
+    
+    @media (max-width: 600px) {
+        .container {
+            margin: 5%;
+        }
+        
+        .menu {
+            flex-wrap: wrap;
+        }
+        
+        .form-container {
+            margin-top: 50px;
+            width: 100%;
+        }
+    }
+</style>
+<script>
+    function validateForm() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+        
+        // Validation logic
+        var usernameRegex = /^(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]+$/; // Regex to allow alphanumeric characters and exactly one special character
+        var passwordRegex = /^[a-zA-Z0-9!@#$%^&*]+$/; // Regex to allow alphanumeric and special characters
+        
+        var specialCharCount = (username.match(/[!@#$%^&*]/g) || []).length; // Count the number of special characters in the username
+        
+        if (username.match(usernameRegex) && specialCharCount === 1 && password.match(passwordRegex)) {
+            alert("Login successful!");
+            return true;
+        } else {
+            alert("Incorrect username or password. Please try again.");
+            return false;
+        }
+    }
+</script>
+</head>
+<body>
+<div class="container">
+    <div class="menu">
+        <button><a href="m1.html" style="color: #4CAF50;">Login</a></button>
+        <button><a href="m2.html" style="color: #4CAF50;">Home</a></button>
+        <button><a href="m3.html" style="color: #4CAF50;">Booking</a></button>
+        <button><a href="m4.html" style="color: #4CAF50;">Travel</a></button>
+        <button><a href="m5.html" style="color: #4CAF50;">Overview</a></button>
+    </div>
+    <div class="form-container">
+        <h2>Login</h2>
+        <form onsubmit="return validateForm()">
+            <label for="username">Username:</label>
+            <input type="text" id="username" placeholder="Please enter username...">
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="Please enter password...">
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
